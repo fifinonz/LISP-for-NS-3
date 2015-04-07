@@ -8,7 +8,7 @@
 
  namespace ns3 {
 
-
+NS_LOG_COMPONENT_DEFINE ("NetworkApp");
 static void
 GenerateTraffic( Ptr < Socket > socket , uint32_t size )
 {
