@@ -2,6 +2,10 @@
 #include "ns3/log.h"
 #include "ns3/uinteger.h"
 
+NS_LOG_COMPONENT_DEFINE ("lispheader");
+
+NS_OBJECT_ENSURE_REGISTERED (lispheader);
+
 namespace ns3 {
 
 
