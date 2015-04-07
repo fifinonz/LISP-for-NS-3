@@ -1,3 +1,16 @@
+
+//
+// Network topology
+//
+//  n0
+//     \ 5 Mb/s, 2ms
+//      \          1.5Mb/s, 10ms
+//       n2 -------------------------n3
+//      /
+//     / 5 Mb/s, 2ms
+//   n1
+//
+
 # include <iostream>
 # include "ns3/core-module.h"
 # include "ns3/network-module.h"
@@ -132,7 +145,7 @@ GenerateTraffic( Ptr < Socket > socket , uint32_t size )
 
 	TypeId tid=TypeId::LookupByName ( " ns3::UdpSocketFactory" ) ;
 
-	// create sink
+	  // Create a packet sink to receive these packets
 	 Ptr<Socket> sink = Socket::CreateSocket ( c.Get (0) , tid ) ;
 	 InetSocketAddress local = InetSocketAddress ( eidToxtrL0 . GetAddress (0 ,0), 80); // set sink address to local tunnel router IP
 	 sink->Bind ( local ) ; // bind socket to address
