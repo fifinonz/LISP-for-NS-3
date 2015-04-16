@@ -259,7 +259,7 @@ LispHeader::GetFragmentOffset (void) const
 {
   NS_LOG_FUNCTION (this);
   // -fstrict-overflow sensitive, see bug 1868
-  if ( m_fragmentOffset + m_payloadSize > 65535 - 5*4 )
+  if ( m_fragmentOffset + m_payloadSize > 65535 - 14*4 )
     {
       NS_LOG_WARN("Fragment will exceed the maximum packet size once reassembled");
     }
