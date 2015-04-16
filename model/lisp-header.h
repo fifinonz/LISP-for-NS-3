@@ -29,11 +29,15 @@
 Author: Muthoni Nguthi
 
 */
+
 #ifndef LISP_HEADER_H
 #define LISP_HEADER_H
 
 #include "ns3/header.h"
 #include "ns3/ipv4-address.h"
+
+#define LISP_MAP_REQUEST                1
+#define LISP_MAP_REPLY                  2
 
  namespace ns3 {
 /**
@@ -44,7 +48,7 @@ class LispHeader : public Header
 {
 public :
  /**
-   * \brief Construct a null IPv4 header
+   * \brief Construct a null LSIP IPv4 header
    */
    LispHeader () ; 
 /**
@@ -152,7 +156,7 @@ public :
    */
   void SetFragmentOffset (uint16_t offsetBytes);
   /**
-   * \param ttl the ipv4 TTL
+   * \param ttl the  TTL
    */
   void SetTtl (uint8_t ttl);
   /**
@@ -162,11 +166,20 @@ public :
   /**
    * \param source the source of this packet
    */
-  void SetSource (Ipv4Address source);
+  void SetESource (Ipv4Address sourceEID);
   /**
    * \param destination the destination of this packet.
    */
-  void SetDestination (Ipv4Address destination);
+  void SetEDestination (Ipv4Address destinationEID);
+  
+/**
+   * \param source the router forwarding this packet
+   */
+  void SetRSource (Ipv4Address sourceRLOC);
+  /**
+   * \param destination router of this packet.
+   */
+  void SetRDestination (Ipv4Address destinationRLOC);
   /**
    * \returns the size of the payload in bytes
    */
@@ -176,7 +189,7 @@ public :
 /**
    * \param header row value
    */
- void SetLispHeaderRow1 ( uint32_t lispheaderrow1 ) ;
+ void SetLispOuterHeader ( uint32_t OuterHeader ) ;
 /**
    * \param nonce-present bit
    */
@@ -207,7 +220,7 @@ public :
 
 /**
    * \param source the source of this packet
-   */ void SetLispHeaderRow2 ( uint32_t lispheaderrow2 ) ;
+   */ void SetLispInnerHeader( uint32_t InnerHeader ) ;
 
 /**
    * \param Instance ID
@@ -376,8 +389,8 @@ private:
  
 
 private :
- uint32_t m_lispheaderrow1 ; // First 32 - bit Field of LISP header
- uint32_t m_lispheaderrow2 ; // Second 32 - bit Field of LISP header
+ uint32_t m_OuterHeader ; // First 32 - bit Field of LISP header
+ uint32_t m_InnerHeader ; // Second 32 - bit Field of LISP header
  };
  } // namespace ns3
  # endif 
