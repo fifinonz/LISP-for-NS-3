@@ -383,7 +383,7 @@ private:
   Ipv4Address m_destination; //!< destination address
   uint16_t m_checksum; //!< checksum
   bool m_goodChecksum; //!< true if checksum is correct
-  uint16_t m_headerSize; //!< IP header size
+  uint16_t m_headerSize; //!< LISP IP header size
 
 
  
